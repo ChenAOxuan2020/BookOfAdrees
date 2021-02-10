@@ -9,41 +9,35 @@ import java.util.Map;
 //улице или в заданном доме
 public class Task1 {
     public int add(int A, int B){
-        int result = A + B;
-        return result;
+        return A + B;
     }
     public Map<String,String> bookOfAdress(Map<String,String> putIn,
                                            Map<String,String> addOrChange,
                                            List<String> delect){
-        Map<String,String> outPut = putIn;
-        Map<String,String> aOrC = addOrChange;
-        List<String> d = delect;
-        for (String Key : aOrC.keySet()) {
-            outPut.put(Key, aOrC.get(Key));
+        for (String Key : addOrChange.keySet()) {
+            putIn.put(Key, addOrChange.get(Key));
         }
-        for (String name : d){
-            if (outPut.containsKey(name)) {
-                outPut.remove(name);
-            }
+        for (String name : delect){
+            putIn.remove(name);
         }
-        System.out.println(outPut);
-        return outPut;
+        System.out.println(putIn);
+        return putIn;
     }
     public String search(String inPut,Map<String,String> adressBook){
-        String outPut = "";
+        StringBuilder outPut = new StringBuilder();
         if (adressBook.containsKey(inPut)){
-            outPut = "this person " + inPut + " live in " + adressBook.get(inPut);
+            outPut = new StringBuilder("this person " + inPut + " live in " + adressBook.get(inPut));
         }else {
             for (String Key : adressBook.keySet()) {
-                if (adressBook.get(Key) == inPut){
-                    outPut += Key + " ";
+                if (adressBook.get(Key).equals(inPut)){
+                    outPut.append(Key).append(" ");
                 }
             }
         }
-        if (outPut ==""){
-            outPut = "information of this person/adress not found";
+        if (outPut.toString().equals("")){
+            outPut = new StringBuilder("information of this person/adress not found");
         }
         System.out.println(outPut);
-        return outPut;
+        return outPut.toString();
     }
 }
