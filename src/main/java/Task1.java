@@ -8,9 +8,11 @@ import java.util.Map;
 //человека, получение адреса человека, получение списка людей, живущих на заданной
 //улице или в заданном доме
 public class Task1 {
+    //test
     public int add(int A, int B){
         return A + B;
     }
+    //change , add , delect
     public Map<String,String> bookOfAdress(Map<String,String> putIn,
                                            Map<String,String> addOrChange,
                                            List<String> delect){
@@ -23,6 +25,7 @@ public class Task1 {
         System.out.println(putIn);
         return putIn;
     }
+    //search adress/name
     public String search(String inPut,Map<String,String> adressBook){
         StringBuilder outPut = new StringBuilder();
         if (adressBook.containsKey(inPut)){
