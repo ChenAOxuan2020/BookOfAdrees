@@ -7,21 +7,21 @@ import static org.junit.Assert.assertEquals;
 public class Task1Test {
     @Test
     public void test1() {
-        assertEquals(5,new Task1().add(3,2));
+        assertEquals(5,new Task1().add(6,-1));
     }
     @Test
     public void test2() {
-        Map<String, String> inPut = new HashMap() {{
+        Map<String, String> inPut = new HashMap<>() {{
             put("1", " улицы1дом1квартиры1");
             put("2", " улицы2дом2квартиры2");
             put("4", " улицы4дом4квартиры4");
         }};
-        Map<String, String> addOrChange = new HashMap() {{
+        Map<String, String> addOrChange = new HashMap<>() {{
             put("1", " улицы2дом2квартиры2");
             put("3", " улицы3дом3квартиры3");
         }};
         List<String> delect = List.of("2");
-        Map<String, String> get = new HashMap() {{
+        Map<String, String> get = new HashMap<>() {{
             put("1", " улицы2дом2квартиры2");
             put("3", " улицы3дом3квартиры3");
             put("4", " улицы4дом4квартиры4");
@@ -30,7 +30,7 @@ public class Task1Test {
     }
     @Test
     public void test3(){
-        Map<String, String> bookAdress = new HashMap() {{
+        Map<String, String> bookAdress = new HashMap<>() {{
             put("1", "улицы2дом2квартиры2");
             put("3", "улицы2дом2квартиры2");
             put("4", "улицы4дом4квартиры4");
