@@ -147,7 +147,7 @@ public class bookOfAdress {
         return outPut;
     }
 
-    //хранение адресс в отельном .
+    //хранение адресс в отельном String.
     public String saveOfAdress()  {
         StringBuilder midSave = new StringBuilder();
         book.forEach((key,value)->{
