@@ -1,3 +1,8 @@
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 
@@ -14,13 +19,13 @@ public class bookOfAdress {
     }};
 
     // главная функция
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
 
 
         String Out = "input1       to add Name And Adress\n" +
                 "input2       to remove\ninput3       to change Adress\n" +
                 "input4       to get Adress\ninput5       to get Name\n" +
-                "input0       to exit\n";
+                "input0       to exit\ninput6       to print adrees which is saved\n";
         bookOfAdress ues = new bookOfAdress();
         System.out.println(Out);
         Scanner sc = new Scanner(System.in);
@@ -81,6 +86,12 @@ public class bookOfAdress {
                     i = sc.nextInt();
                     continue;
                 }
+                case 6 ->{
+                    System.out.println(ues.saveOfAdress());
+                    System.out.println(Out);
+                    i = sc.nextInt();
+                    continue;
+                }
                 default -> {
                     System.out.println("error in input");
                     System.out.println(Out);
@@ -88,49 +99,61 @@ public class bookOfAdress {
                     continue;
                 }
             }
+
         }
     }
 
 
-
     //добавление пары человек-адрес,Возвращает false если человек уже был в книги
-    public Boolean addNameAndAdress(String name,String adress){
-        if (!book.containsKey(name) ){
-            book.put(name,adress);
+    public Boolean addNameAndAdress(String name, String adress) {
+        if (!book.containsKey(name)) {
+            book.put(name, adress);
             return true;
-        }else return false;
+        } else return false;
     }
+
     //удаление человека  Возвращает false если человек с таким именем не был в книги
-    public Boolean removeName(String name){
-        if (book.containsKey(name)){
+    public Boolean removeName(String name) {
+        if (book.containsKey(name)) {
             book.remove(name);
             return true;
-        }else return false;
+        } else return false;
     }
+
     // изменение адреса Возвращает false если человек с таким именем не был в книги либо у него уже был такой адрес
-    public Boolean changeAdress(String name,String adress){
-        if (book.containsKey(name)&&!(book.get(name).equals(adress))){
-            book.put(name,adress);
+    public Boolean changeAdress(String name, String adress) {
+        if (book.containsKey(name) && !(book.get(name).equals(adress))) {
+            book.put(name, adress);
             return true;
-        }else return false;
+        } else return false;
     }
+
     //получение адреса человека Возвращает not found если человек с таким именем не был в книги
-    public String getAdress(String name){
+    public String getAdress(String name) {
         return book.getOrDefault(name, "not found");
     }
+
     //получение списка людей, живущих на заданной улице или в заданном адрес
-    public List<String> getName(String adress){
+    public List<String> getName(String adress) {
         List<String> outPut = new ArrayList<>();
-        for (String key : book.keySet()){
+        for (String key : book.keySet()) {
             String mid = book.get(key);
             String[] midStr = mid.split("/");
             String[] adressStr = adress.split("/");
-            if (midStr[0].equals(adressStr[0])){
+            if (midStr[0].equals(adressStr[0])) {
                 outPut.add(key);
             }
         }
         return outPut;
     }
 
+    //хранение адресс в отельном .
+    public String saveOfAdress()  {
+        StringBuilder midSave = new StringBuilder();
+        book.forEach((key,value)->{
+            midSave.append(key + "\t" + value +"\n");
+        });
+        return midSave.toString();
+    }
 
 }

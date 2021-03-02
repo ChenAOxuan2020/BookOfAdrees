@@ -66,4 +66,14 @@ public class bookOfAdressTest {
         assertTrue(testFifth.changeAdress("2","1/2"));
         assertEquals(compare,testFifth.getName("1"));
     }
+
+    @Test
+    public void SaveAdress(){
+        bookOfAdress testSixth = new bookOfAdress();
+        assertTrue(testSixth.addNameAndAdress("1","1/1"));
+        assertTrue(testSixth.addNameAndAdress("2","2/2"));
+        assertEquals("1\t1/1\n" +
+                "2\t2/2\n" +
+                "name\tadress\n",testSixth.saveOfAdress());
+    }
 }
