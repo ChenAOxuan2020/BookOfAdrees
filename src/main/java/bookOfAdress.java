@@ -147,12 +147,19 @@ public class bookOfAdress {
         return outPut;
     }
 
-    //хранение адресс в отельном String.
+    //хранение адресс в отельном String и в файле bookAdress,если успешно то вывод adress has saved in bookAdress.txt
     public String saveOfAdress()  {
         StringBuilder midSave = new StringBuilder();
         book.forEach((key,value)->{
             midSave.append(key + "\t" + value +"\n");
         });
+        try {
+            BufferedWriter writeIn = new BufferedWriter(new FileWriter("bookAdress.txt"));
+            writeIn.write(midSave.toString());
+            writeIn.close();
+            System.out.println("adress has saved in bookAdress.txt");
+        }catch (IOException e){
+        }
         return midSave.toString();
     }
 
